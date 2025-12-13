@@ -11,7 +11,7 @@ jobs:
               #     git clone https://github.com/${{github.repository}}.git myFiles
               #     cd myFiles && ls -al
             - name: Setup NodeJS env
-              uses: actions/setup-node@v6
+              uses: actions/setup-node@v5
               with:
                   node-version: 22
             - name: Print NodeJS version
