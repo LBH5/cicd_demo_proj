@@ -4,21 +4,22 @@ jobs:
     test:
         runs-on: ubuntu-latest
         steps: 
-            # - name: Get Code
-              # run: |
-              #     echo "Cloning Project Repo!"
-              #     echo "RepoName:${{toJson(github.repository)}}"
-              #     git clone https://github.com/${{github.repository}}.git myFiles
-              #     cd myFiles && ls -al
+            - name: Checkout Repository Code
+              uses: actions/checkout@v4 
+              
             - name: Setup NodeJS env
-              uses: actions/setup-node@v4
+              uses: actions/setup-node@v4 
               with:
-                  node-version: 22
+                  node-version: 20
+                  
             - name: Print NodeJS version
               run: node -v
+              
             - name: Install NodeJS Dependencies
               run: npm install
+              
             - name: Run unit tests
               run: npm run test:unit
+              
             - name: Complete Job
               run: echo "Test job was successfuly completed!"
