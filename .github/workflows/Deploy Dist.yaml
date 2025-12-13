@@ -20,6 +20,7 @@ jobs:
             - name: Run unit tests
               run: npm run test:unit
     build:
+        needs: [test]
         runs-on: ubuntu-latest
         steps: 
             - name: Checkout Repository Code
@@ -38,5 +39,12 @@ jobs:
               
             - name: Build the project
               run: npm run build
+    deploy:
+        needs: [build]
+        runs-on: ubuntu-latest
+        steps: 
+            - name: Deploy Dist
+              run: echo "Deployement has been successfully completed!"
+              
           
         
