@@ -9,7 +9,9 @@ jobs:
               #     echo "Cloning Project Repo!"
               #     echo "RepoName:${{toJson(github.repository)}}"
               #     git clone https://github.com/${{github.repository}}.git myFiles
-              #     cd myFiles && ls -al 
+              #     cd myFiles && ls -al
+            - name: Accessing the Code
+              run: cd myFiles/cicd_demo_proj 
             - name: Setup NodeJS env
               uses: actions/setup-node@v6
               with:
