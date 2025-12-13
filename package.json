@@ -17,6 +17,7 @@
     "format": "prettier --write --experimental-cli src/"
   },
   "dependencies": {
+    "morgan": "^1.10.1",
     "vue": "^3.5.25"
   },
   "devDependencies": {
