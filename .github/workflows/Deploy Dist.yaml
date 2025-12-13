@@ -1,5 +1,5 @@
 name: Deploy Dist Folder
-on: push
+on: [push,workflow_dispatch]
 jobs: 
     test:
         runs-on: ubuntu-latest
@@ -13,8 +13,14 @@ jobs:
                   node-version: 22
             - name: Print NodeJS version
               run: node -v
-              
+            - name: Cache Dependencies
+              uses: actions/cache@v4
+              id: cache
+              with:
+                  path: node_modules
+                  key: ${{runner.os}}-node-${{hashFiles('**/package-lock.json')}}
             - name: Install NodeJS Dependencies
+              if: ${{ steps.cache-npm.outputs.cache-hit != 'true' }}
               run: npm install
               
             - name: Run unit tests
@@ -34,7 +40,14 @@ jobs:
             - name: Print NodeJS version
               run: node -v
               
+            - name: Cache Dependencies
+              uses: actions/cache@v4
+              id: cache
+              with:
+                  path: node_modules
+                  key: ${{runner.os}}-node-${{hashFiles('**/package-lock.json')}}
             - name: Install NodeJS Dependencies
+              if: ${{ steps.cache-npm.outputs.cache-hit != 'true' }}
               run: npm install
               
             - name: Build the project
