@@ -1,4 +1,7 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+
+  // this is a comment
+</script>
 
 <template>
   <section class="main">
