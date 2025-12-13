@@ -4,7 +4,7 @@ jobs:
     test:
         runs-on: ubuntu-latest
         steps: 
-            - name: Get Code
+            # - name: Get Code
               # run: |
               #     echo "Cloning Project Repo!"
               #     echo "RepoName:${{toJson(github.repository)}}"
@@ -17,7 +17,7 @@ jobs:
             - name: Print NodeJS version
               run: node --version
             - name: Install NodeJS Dependencies
-              run: npm i
+              run: npm install
             - name: Run unit tests
               run: npm run test:unit
             - name: Complete Job
