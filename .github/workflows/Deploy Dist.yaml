@@ -5,8 +5,20 @@ jobs:
         runs-on: ubuntu-latest
         steps: 
             - name: Get Code
-              run: |
-                  echo "Cloning Project Repo!"
-                  echo "RepoName:${{toJson(github.repository)}}"
-                  git clone https://github.com/${{github.repository}}.git myFiles
-                  cd myFiles && ls -al 
+              # run: |
+              #     echo "Cloning Project Repo!"
+              #     echo "RepoName:${{toJson(github.repository)}}"
+              #     git clone https://github.com/${{github.repository}}.git myFiles
+              #     cd myFiles && ls -al 
+            - name: Setup NodeJS env
+              uses: actions/setup-node@v6
+              with:
+                  node-version: 25.2.1
+            - name: Print NodeJS version
+              run: node --version
+            - name: Install NodeJS Dependencies
+              run: npm i
+            - name: Run unit tests
+              run: npm run test:unit
+            - name: Complete Job
+              run: echo "Test job was successfuly completed!"
