@@ -6,6 +6,6 @@ import App from '../App.vue'
 describe('App', () => {
   it('mounts renders properly', () => {
     const wrapper = mount(App)
-    expect(wrapper.text()).toContain('Github Actions! For Beginners')
+    expect(wrapper.text()).toContain('Github Actions! Fr Beginners')
   })
 })
