@@ -10,8 +10,7 @@ jobs:
             - name: Setup NodeJS env
               uses: actions/setup-node@v4 
               with:
-                  node-version: 20
-                  
+                  node-version: 22
             - name: Print NodeJS version
               run: node -v
               
@@ -20,6 +19,24 @@ jobs:
               
             - name: Run unit tests
               run: npm run test:unit
+    build:
+        runs-on: ubuntu-latest
+        steps: 
+            - name: Checkout Repository Code
+              uses: actions/checkout@v4 
               
-            - name: Complete Job
-              run: echo "Test job was successfuly completed!"
+            - name: Setup NodeJS env
+              uses: actions/setup-node@v4 
+              with:
+                  node-version: 22
+                  
+            - name: Print NodeJS version
+              run: node -v
+              
+            - name: Install NodeJS Dependencies
+              run: npm install
+              
+            - name: Build the project
+              run: npm run build
+          
+        
