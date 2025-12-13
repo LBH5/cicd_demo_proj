@@ -15,7 +15,7 @@ jobs:
               with:
                   node-version: 25
             - name: Print NodeJS version
-              run: node --version
+              run: node -v
             - name: Install NodeJS Dependencies
               run: npm install
             - name: Run unit tests
