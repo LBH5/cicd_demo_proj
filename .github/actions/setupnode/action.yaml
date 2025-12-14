@@ -1,0 +1,21 @@
+name: Setup Node and Install Dependencies
+description: "Handling nodejs setup and caching & installing Dependencies!"
+runs:
+    using: composite
+    steps:
+        - name: Setup NodeJS env
+          uses: actions/setup-node@v4 
+          with:
+              node-version: 22
+        - name: Print NodeJS version
+          run: node -v
+        - name: Cache Dependencies
+          uses: actions/cache@v4
+          id: cache
+          with:
+              path: node_modules
+              key: ${{runner.os}}-node-${{hashFiles('**/package-lock.json')}}
+        - name: Install NodeJS Dependencies
+          if: ${{ steps.cache-npm.outputs.cache-hit != 'true' }}
+          run: npm install
+          shell: bash
