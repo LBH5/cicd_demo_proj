@@ -22,11 +22,8 @@ jobs:
         steps: 
             - name: Checkout Repository Code
               uses: actions/checkout@v4 
-              
             - name: Setup nodejs & install Dependencies
               uses: ./.github/actions/setupnode
-            - name: Run unit tests
-              
             - name: Build the project
               run: npm run build
             - name: Upload dist artifact
