@@ -1,5 +1,5 @@
 <script setup lang="ts">
-
+// Comment
 </script>
 
 <template>
