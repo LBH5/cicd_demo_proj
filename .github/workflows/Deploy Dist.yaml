@@ -52,12 +52,28 @@ jobs:
               
             - name: Build the project
               run: npm run build
+            - name: Upload dist artifact
+              uses: actions/upload-artifact@v4
+              with:
+                  name: dist-files
+                  path: dist
+                  if-no-files-found:
+                    run: echo "No dist folder was found!"
     deploy:
         needs: [build]
         runs-on: ubuntu-latest
         steps: 
+            - name: Download Dist artifact
+              uses: actions/download-artifact@v4
+              with:
+                  name: dist-files
+                  path: dist
             - name: Deploy Dist
-              run: echo "Deployement has been successfully completed!"
+              run: |
+                echo "Dist files:"
+                ls -al dist
+                echo "Deployement has been successfully completed!"
+
               
           
         
