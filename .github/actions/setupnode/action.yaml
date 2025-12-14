@@ -1,5 +1,10 @@
 name: Setup Node and Install Dependencies
 description: "Handling nodejs setup and caching & installing Dependencies!"
+inputs:
+  node-version:
+    description: "Specify nodejs version"
+    required: false
+    default: "22"
 runs:
     using: composite
     steps:
